@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title>Bill Book_OM TOUR & TRAVELS</title>
+</head>
+<style>
+    body{
+    margin: 1rem;
+}
+.input,textarea{
+    width: 100%;
+    height: 48px;
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 7px 1px gray;
+    border-radius: 15px;
+}
+#heading{
+    text-align: center;
+    font-weight: 700;
+}
+#amt{
+    float: right;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+</style>
+
+        <div id="showorhide">
+            <p id="heading"><i class="fa-sharp fa-solid fa-om"></i> OM TOUR AND  TRAVELS</p>
+            <hr>
+          <p>Get your Payments Bill in one touch by Fill up this form</p>
+          <p>Reporting Reading in KM: <br> <input type="number" name="" required id="reportreading"></p>
+          <p>Closing Reading in KM: <br> <input type="number" required id="closingreading"></p>
+          <p>Charge per KM:<br> <input type="number" name=""  required id="charge"> <input type="button" value="check Amount" onclick="check()"></p>
+          <p id="totalamount1" style="font-weight: 800;">See Your Bill Amount Here</p>
+          <p id="kilometer1" style="font-weight: 800;">See Your Running KM Here</p>
+          <p>Paid Amount: <br> <input type="number" name=""  required id="paidamt"></p>
+          <p>If Any Dues: <br> <input type="text" name=""  required id="askdues"></p>
+          <p>Customers Name: <br> <input type="text" name="" required id="name"></p>
+          <button type="button" class="btn btn-outline-secondary" onclick="bookbill()">Get payment Bill</button> <br><br>
+          <p>Get Hand Bill if trip below 200 KM <br>
+          <a href="handbill.html"><button type="button" class="btn btn-outline-secondary">Generate hand bill </button></a></p> <br><br>
+          <a href="index.html"><button type="button" class="btn btn-outline-primary">Back to Home Page</button></a>
+          <h5>  Note: If your trip is less than 200 KM then charge is 3000rs/- fixed <br>
+        Bill valid only for Trip goes over 200 Km. </h5>
+        
+          </div>
+          
+          
+            <div id="hideorshow" style="visibility:hidden;">
+         
+            <p style="font-weight: 800;float: right;"><i class="fa-sharp fa-solid fa-om"></i> OM TOUR AND  TRAVELS</p>
+            <h5><u>Payments Bill</u></h5>
+            <p style="font-weight: 800;">Total running in KM: <span id="kilometer"></span></p>
+            <p style="font-weight: 800;">Amount to Pay: <span id="totalamount"></span></p>
+            <p style="font-weight: 800;">Paid Amount: <span id="pa"></span></p>
+            <p style="font-weight: 800;">Dues Amount: <span id="dues"></span></p>
+            <p style="font-weight: 800;">If Any Dues: <span id="ad"></span></p>
+            <p>Signature Of Owner: ____________</p>
+            <p id="naam"></p>
+        
+          <h5>  Note: If your trip is less than 200 KM then charge is 3000rs/- fixed  <br>
+            Bill valid only for Trip goes over 200 Km.</h5>
+        
+            <h4 style="text-align: center;font-family: cursive;"> Wish You Have A Nice Journey!</h4><hr>
+            <center>
+                <i class="fa-solid fa-scissors" ></i>.......................................................................<i class="fa-solid fa-scissors"></i> <br>
+                   
+                    </center>
+        
+            <center>
+                <button type="button" class="btn btn-outline-secondary" onclick="window.print()">Print Bill</button> <br> <br>
+                
+          <a href="index.html"><button type="button" class="btn btn-outline-danger">Back to Home Page</button></a>
+          </center>
+        </div>
+
+<body>
+   
+
+<script>
+function bookbill(){
+    a=document.getElementById('reportreading').value;
+    b=document.getElementById('closingreading').value;
+    c=document.getElementById('charge').value;
+    d=document.getElementById('name').value;
+    e=document.getElementById('paidamt').value;
+    g=(b-a)*c;
+    h=document.getElementById('askdues').value;
+    document.getElementById("kilometer").innerHTML= b-a;
+    document.getElementById("totalamount").innerHTML= (b-a)*c;
+    document.getElementById("naam").innerHTML="Bill to "+ d + " from Manish kumar singh"
+    document.getElementById("pa").innerHTML= e;
+    document.getElementById("dues").innerHTML= g-e;
+    document.getElementById("ad").innerHTML=h;
+    
+   document.getElementById("hideorshow").style.visibility="visible"
+   document.getElementById("showorhide").style.display="none"
+
+}
+function check(){
+    aa=document.getElementById('reportreading').value;
+    bb=document.getElementById('closingreading').value;
+    cc=document.getElementById('charge').value;
+    document.getElementById('totalamount1').innerHTML= (bb-aa)*cc + "Rs";
+    document.getElementById('kilometer1').innerHTML= bb-aa + "KM";
+}
+</script>
+</body>
+</html>
